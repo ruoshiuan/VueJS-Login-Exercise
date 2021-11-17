@@ -84,6 +84,7 @@ export default {
       },
     };
   },
+  // 頁面載入時先驗證登入狀態
   async created() {
     const isLogining = localStorage.getItem("token");
     if (isLogining) {
@@ -115,6 +116,7 @@ export default {
       this.errors.password = !isVaild;
       this.errors.loginFailedMsg = false;
     },
+    // fetch /login/error API
     async loginFailedFetch() {
       if (
         isVaildAccount(this.user.account) === true &&
@@ -135,6 +137,7 @@ export default {
         }
       }
     },
+    // fetch /login/ok API
     async loginOkFetch() {
       if (
         isVaildAccount(this.user.account) === true &&
